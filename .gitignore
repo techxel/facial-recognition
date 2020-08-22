@@ -1,7 +1,7 @@
 .DS_Store
 __pycache__
 dataset
-model
 trainer
 collect
+model/*.h5
 *.h5
