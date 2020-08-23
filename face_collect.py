@@ -16,7 +16,7 @@ count = 0
 cur_time = time.strftime("%Y%m%d-%H%M%S", time.localtime()) 
 while(True):
     ret, img = cam.read()
-#    img = cv2.flip(img, -1) # flip video image vertically
+    img = cv2.flip(img, -1) # flip video image vertically
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_detector.detectMultiScale(
             gray,
@@ -30,10 +30,10 @@ while(True):
         count += 1
         # Save the captured image into the collect folder
         img_dir = "collect/" + str(face_id)
-        if not os.path.exists(path):
-            os.makedirs(path)
+        if not os.path.exists(img_dir):
+            os.makedirs(img_dir)
         img_path = img_dir + '/' + cur_time + '-'  +str(count) + ".jpg"
-        cv2.imwrite(img_path, gray[y:y+h,x:x+w])
+        cv2.imwrite(img_path, img) # save the origin pic
         cv2.imshow('image', img)
 
     k = cv2.waitKey(100) & 0xff # Press 'ESC' for exiting video

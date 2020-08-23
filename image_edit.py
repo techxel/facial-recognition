@@ -7,8 +7,8 @@ def resize_image(img, length=64, board=False):
     # 获取长的一边缩放比 
     scale = min(length/w, length/h)
 
-    width = int(w * scale)
-    height = int(h * scale)
+    width = round(w * scale)
+    height = round(h * scale)
 
     # 如果是放大
     if scale > 1:

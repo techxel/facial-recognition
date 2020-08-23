@@ -11,7 +11,7 @@ y = []
 # function to get the images and label data
 def trainImages(path, user_id):
     for img_path in os.listdir(path):
-        img = plt.imread(img_path)
+        img = plt.imread(path + '/' + img_path)
         # is image ?
         if not hasattr(img, 'shape'):
             print(img_path, 'is not a image file!')
@@ -44,7 +44,7 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-model.fit(X_train, y_train, epochs=10)
+model.fit(X_train, y_train, epochs=5)
 
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print("n\Test accuracy: ", test_acc)

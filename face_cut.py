@@ -28,11 +28,12 @@ def cutFaceImages(src_dir, dst_dir):
             gray = gray[y:y+h, x:x+w]
             if (0,0) == gray.shape:
                 continue
-            gray = resize_image(gray, 64)
+            gray = resize_image(gray, 64, True)
             save_path = dst_dir + '/' + str(index) + '-' + img_path
             cv2.imwrite(save_path, gray)
 
 
 cutFaceImages('collect/1', 'dataset/1')
+cutFaceImages('collect/2', 'dataset/2')
 
 
